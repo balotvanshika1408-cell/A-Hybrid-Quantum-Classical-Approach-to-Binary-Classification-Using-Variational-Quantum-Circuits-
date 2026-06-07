@@ -10,13 +10,13 @@ claiming quantum advantage.
 
 ### 2. Objectives 
 The main objectives of this project are: 
- To preprocess and reduce a classical dataset so that it is compatible with near-term quantum 
+# To preprocess and reduce a classical dataset so that it is compatible with near-term quantum 
 circuits. 
- To design a Variational Quantum Circuit(VQC) with data re-uploading for feature encoding. 
- To generate quantum features using expectation values from the quantum circuit. 
- To train a hybrid quantum–classical classifier using these quantum features. 
- To compare the hybrid model with classical baseline models using Accuracy and AUC-ROC. 
- To analyze performance stability, seeding effects, and potential sources of error such as data 
+# To design a Variational Quantum Circuit(VQC) with data re-uploading for feature encoding. 
+# To generate quantum features using expectation values from the quantum circuit. 
+# To train a hybrid quantum–classical classifier using these quantum features. 
+# To compare the hybrid model with classical baseline models using Accuracy and AUC-ROC. 
+# To analyze performance stability, seeding effects, and potential sources of error such as data 
 leakage. 
 
 ### 3. Data Analysis and Preprocessing 
