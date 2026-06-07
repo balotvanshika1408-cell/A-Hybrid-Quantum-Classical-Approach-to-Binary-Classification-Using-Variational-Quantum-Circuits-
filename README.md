@@ -136,11 +136,11 @@ thresholds.
 AUC–ROC is particularly important in fraud detection scenarios due to potential class imbalance. 
 
 ### 7.3 Quantitative Comparison 
-Model                               Accuracy      AUC-ROC                                                                                       
-1. Logistic Regression               0.937         0.952           
-2. Random Forest                     0.974         0.992                  
-3. Classical Neural Network          0.965         0.941  
-4. Quantum–Classical Hybrid          0.961         0.979 
+    Model                                                                                                                     
+1. Logistic Regression  - ( Accuracy= 0.937) , ( AUC-ROC = 0.952  )         
+2. Random Forest   - ( Accuracy= 0.974 ), (AUC-ROC= 0.992 )                 
+3. Classical Neural Network -   (Accuracy= 0.965 ) ,( AUC-ROC= 0.941)
+4. Quantum–Classical Hybrid - ( Accuracy = 0.961), ( AUC-ROC= 0.979 )
                
  The hybrid quantum–classical model demonstrated competitive and, in some runs, superior AUC–ROC 
 values compared to classical baselines. While accuracy values were similar across models, improvements 
