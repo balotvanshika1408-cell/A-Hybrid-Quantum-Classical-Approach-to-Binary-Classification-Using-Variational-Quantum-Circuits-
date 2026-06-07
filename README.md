@@ -52,14 +52,16 @@ This step reduced noise and ensured the dataset was suitable for quantum encodin
 ### 3.4 Feature Scaling 
 All selected numerical features were scaled using Min–Max Scaling, mapping values to the range [0,1]. 
 This scaling is essential for quantum circuits, as rotation angles are sensitive to input magnitude. 
-3.5 Train–Test Split 
+
+### 3.5 Train–Test Split 
 A single train–test split was created at the beginning. 
 The same split was reused for: 
- Classical machine learning models 
- Quantum feature generation 
- Quantum–Classical hybrid model evaluation 
+1. Classical machine learning models 
+2. Quantum feature generation 
+3. Quantum–Classical hybrid model evaluation 
 This ensured a fair and consistent comparison across all models. 
-4. Classical Baseline Models 
+
+### 4. Classical Baseline Models 
 To establish benchmarks, the following classical models were trained using scaled classical features: 
 1. Logistic Regression 
 2. Random Forest 
@@ -68,77 +70,79 @@ These models were evaluated using:
 1. Accuracy              
 2. AUC-ROC 
 5. Hybrid Quantum–Classical Model 
-5.1 Quantum Data Encoding 
+
+### 5.1 Quantum Data Encoding 
 Classical features were encoded into quantum states using parameterized rotation gates (RY). Each 
 feature was mapped to the rotation angle of a corresponding qubit. To ensure stable encoding, all 
 features were scaled to the range [0,1] before being mapped to rotation angles. 
-5.2 Variational Quantum Circuit (VQC) 
+
+### 5.2 Variational Quantum Circuit (VQC) 
 A Variational Quantum Circuit was constructed using: 
 1. Layered RY rotations 
 2. Entanglement via CNOT gates 
 3. Data re-uploading across multiple layers 
 The trainable parameters of the VQC are denoted by θ and are optimized during training using a classical 
 optimizer. 
-5.3 Quantum Feature Extraction 
+
+### 5.3 Quantum Feature Extraction 
 Once the quantum circuit is constructed and parameterized, it is executed using a quantum simulator. 
 Measurements are not taken directly; instead, expectation values of Pauli-Z operators are computed for 
 each qubit. 
 These expectation values produce a real-valued feature vector for each data sample. This vector 
 represents quantum-generated features, which capture complex interactions between the original input 
 features 
-5.4 Classical Co-Processor 
+
+### 5.4 Classical Co-Processor 
 The quantum-generated features are then passed to a classical neural network, which acts as a co
 processor. In this project, a Multi-Layer Perceptron (MLP) classifier was used. 
 The classical model: 
 1. Receives quantum features as input 
 2. Learns decision boundaries using standard backpropagation 
 3. Outputs final class predictions and probabilities 
-6. Training and Optimization 
-6.1 Hybrid Training Loop 
+
+### 6. Training and Optimization 
+
+### 6.1 Hybrid Training Loop 
 The model was trained using a hybrid optimization pipeline: 
 1. Quantum parameters (θ) were optimized using the COBYLA gradient-free optimizer 
 2. Binary cross-entropy (log_loss) was used as the loss function 
 3. Classical neural network training occurred inside the optimization loop 
-6.2 Reproducibility 
+
+### 6.2 Reproducibility 
 Random seeds were fixed for: 
 1. NumPy 
 2. Python random 
 3. Scikit-learn models 
 This ensured consistent train–test splits and reproducible results. 
-7. Comparative Analysis  
+
+### 7. Comparative Analysis  
 To evaluate the effectiveness of the proposed hybrid quantum–classical model, its performance was 
 compared against multiple classical machine learning baselines trained on the same pre-processed 
 dataset. The comparison was conducted using consistent train–test splits, identical feature sets, and 
 standard evaluation metrics. 
-7.1 Models Compared 
+
+### 7.1 Models Compared 
 The following models were evaluated: 
 1. Logistic Regression (LR) 
 2. Random Forest (RF) 
 3. Classical Neural Network (MLP) 
 4. Quantum–Classical Hybrid Model 
-7.2 Evaluation Metrics 
+
+### 7.2 Evaluation Metrics 
 Model performance was assessed using: 
 1. Accuracy: Measures the overall correctness of predictions. 
 2. AUC–ROC: Measures the model’s ability to distinguish between classes across different decision 
 thresholds. 
 AUC–ROC is particularly important in fraud detection scenarios due to potential class imbalance. 
-7.3 Quantitative Comparison 
-Model                                            
-1. Logistic Regression                                
-2. Random Forest                                              
-3. Classical Neural Network                 
-4. Quantum–Classical Hybrid                 
-Accuracy        
-0.937               
-0.974               
-0.965               
-0.961               
-AUC-ROC 
-0.952 
-0.992 
-0.941 
-0.979 
-The hybrid quantum–classical model demonstrated competitive and, in some runs, superior AUC–ROC 
+
+### 7.3 Quantitative Comparison 
+Model                               Accuracy      AUC-ROC                                                                                       
+1. Logistic Regression               0.937         0.952           
+2. Random Forest                     0.974         0.992                  
+3. Classical Neural Network          0.965         0.941  
+4. Quantum–Classical Hybrid          0.961         0.979 
+               
+ The hybrid quantum–classical model demonstrated competitive and, in some runs, superior AUC–ROC 
 values compared to classical baselines. While accuracy values were similar across models, improvements 
 in AUC suggest better class separability in the hybrid approach. 
 7.4 ROC Curve Interpretation 
