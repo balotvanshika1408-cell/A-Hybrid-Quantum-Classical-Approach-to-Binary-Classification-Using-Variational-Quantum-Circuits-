@@ -10,29 +10,31 @@ claiming quantum advantage.
 
 ### 2. Objectives 
 The main objectives of this project are: 
-## To preprocess and reduce a classical dataset so that it is compatible with near-term quantum 
-circuits. 
-# To design a Variational Quantum Circuit(VQC) with data re-uploading for feature encoding. 
-# To generate quantum features using expectation values from the quantum circuit. 
-# To train a hybrid quantum–classical classifier using these quantum features. 
-# To compare the hybrid model with classical baseline models using Accuracy and AUC-ROC. 
-# To analyze performance stability, seeding effects, and potential sources of error such as data 
+1. To preprocess and reduce a classical dataset so that it is compatible with near-term quantum 
+circuits.
+
+3. To design a Variational Quantum Circuit(VQC) with data re-uploading for feature encoding. 
+4. To generate quantum features using expectation values from the quantum circuit. 
+5. To train a hybrid quantum–classical classifier using these quantum features. 
+6. To compare the hybrid model with classical baseline models using Accuracy and AUC-ROC. 
+7. To analyze performance stability, seeding effects, and potential sources of error such as data 
 leakage. 
 
 ### 3. Data Analysis and Preprocessing 
 
 ### 3.1 Dataset Understanding 
 The dataset consists of 8 total columns, including: 
- 7 feature columns 
- 1 target column (Fraud) representing a binary classification task. 
+1. 7 feature columns 
+2. 1 target column (Fraud) representing a binary classification task. 
 The dataset contains numerical and categorical attributes, along with a small number of missing values. 
 
 ### 3.2 Handling Missing Values 
 Missing values were handled using manual imputation via the fillna() method. 
- Numerical features were imputed using the median 
- Categorical features were imputed using the mode 
+1. Numerical features were imputed using the median 
+2. Categorical features were imputed using the mode 
 To prevent data leakage, median and mode values were computed only on the training dataset and then 
-applied to the test dataset. 
+applied to the test dataset.
+
 #### 3.3 Outlier Analysis 
 Outliers were analyzed using boxplots and distribution plots. Since the dataset is relatively small and the 
 outliers were not extreme, aggressive removal was avoided to prevent loss of potentially important 
