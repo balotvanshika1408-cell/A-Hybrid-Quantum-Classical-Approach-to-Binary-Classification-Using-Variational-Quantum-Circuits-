@@ -1,5 +1,5 @@
 # A-Hybrid-Quantum-Classical-Approach-to-Binary-Classification-Using-Variational-Quantum-Circuits-
-1.Introduction 
+### 1.Introduction 
 This project explores a Hybrid Quantum–Classical Machine Learning (QML) approach for a binary 
 classification task. The goal is to study how quantum-generated features, obtained using a Variational 
 Quantum Circuit (VQC), perform when combined with a classical machine learning classifier, and to 
@@ -7,7 +7,8 @@ compare this performance with standard classical models.
 The project is implemented entirely using quantum simulation (Qiskit) and classical machine learning 
 (scikit-learn), focusing on correct workflow design, reproducibility, and fair comparison rather than 
 claiming quantum advantage. 
-2. Objectives 
+
+### 2. Objectives 
 The main objectives of this project are: 
  To preprocess and reduce a classical dataset so that it is compatible with near-term quantum 
 circuits. 
@@ -17,23 +18,27 @@ circuits.
  To compare the hybrid model with classical baseline models using Accuracy and AUC-ROC. 
  To analyze performance stability, seeding effects, and potential sources of error such as data 
 leakage. 
-3. Data Analysis and Preprocessing 
-3.1 Dataset Understanding 
+
+### 3. Data Analysis and Preprocessing 
+
+### 3.1 Dataset Understanding 
 The dataset consists of 8 total columns, including: 
  7 feature columns 
  1 target column (Fraud) representing a binary classification task. 
 The dataset contains numerical and categorical attributes, along with a small number of missing values. 
-3.2 Handling Missing Values 
+
+### 3.2 Handling Missing Values 
 Missing values were handled using manual imputation via the fillna() method. 
  Numerical features were imputed using the median 
  Categorical features were imputed using the mode 
 To prevent data leakage, median and mode values were computed only on the training dataset and then 
 applied to the test dataset. 
-3.3 Outlier Analysis 
+#### 3.3 Outlier Analysis 
 Outliers were analyzed using boxplots and distribution plots. Since the dataset is relatively small and the 
 outliers were not extreme, aggressive removal was avoided to prevent loss of potentially important 
 fraud-related patterns. 
-3.3 Feature Selection and Dimensionality Reduction 
+
+### 3.3 Feature Selection and Dimensionality Reduction 
 Due to quantum hardware limitations, the number of features was reduced to at most 4, as each feature 
 corresponds to one qubit .  
 Feature selection was performed using: 
@@ -41,7 +46,8 @@ Feature selection was performed using:
 2. Statistical dependency tests 
 3. Domain relevance 
 This step reduced noise and ensured the dataset was suitable for quantum encoding. 
-3.4 Feature Scaling 
+
+### 3.4 Feature Scaling 
 All selected numerical features were scaled using Min–Max Scaling, mapping values to the range [0,1]. 
 This scaling is essential for quantum circuits, as rotation angles are sensitive to input magnitude. 
 3.5 Train–Test Split 
